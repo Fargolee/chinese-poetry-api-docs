@@ -6,6 +6,7 @@
 
 [![OpenAPI](https://img.shields.io/badge/OpenAPI-3.2.0-6BA539?style=flat-square)](./openapi.yaml)
 [![Tests](https://img.shields.io/badge/tests-36%20passed-2EA44F?style=flat-square)](./api-tests/reports/junit.xml)
+[![Allure](https://img.shields.io/badge/report-Allure-FF6A00?style=flat-square)](./api-tests/README.md)
 [![Pytest](https://img.shields.io/badge/pytest-automation-0A9EDC?style=flat-square)](./api-tests/README.md)
 [![License](https://img.shields.io/badge/license-MIT-555555?style=flat-square)](https://github.com/palemoky/chinese-poetry-api/blob/main/LICENSE)
 
@@ -78,6 +79,7 @@ pytest -m smoke
 - `pytest`：fixture、参数化、测试标记和报告
 - `requests`：HTTP 请求客户端
 - `openpyxl`：测试用例 Excel 生成
+- `allure-pytest`：生成带请求/响应附件的可视化测试报告
 - 请求层统一处理超时与 `429` 限流等待重试
 
 ## 仓库结构
@@ -110,3 +112,4 @@ pytest -m smoke
 - [在线服务](https://poetry.palemoky.com)
 - [OpenAPI 文件](./openapi.yaml)
 - [JUnit 报告](./api-tests/reports/junit.xml)
+- Allure 报告：进入 `api-tests/` 后运行 `allure generate reports/allure-results -o reports/allure-report --clean`

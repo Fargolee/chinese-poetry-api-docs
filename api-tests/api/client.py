@@ -4,6 +4,7 @@ import time
 from typing import Any
 
 import requests
+import allure
 
 from config.settings import BASE_URL, TIMEOUT
 
@@ -22,6 +23,24 @@ class PoetryApiClient:
         url = f"{self.base_url}{path}"
         for attempt in range(self.rate_limit_retries + 1):
             response = self.session.request(method, url, **kwargs)
+            allure.attach(
+                f"{method} {url}\nparams={kwargs.get('params')}\njson={kwargs.get('json')}",
+                name="request",
+                attachment_type=allure.attachment_type.TEXT,
+            )
+            body = response.content
+            if "json" in response.headers.get("content-type", "").lower():
+                allure.attach(
+                    body.decode("utf-8", errors="replace"),
+                    name=f"response-{response.status_code}",
+                    attachment_type=allure.attachment_type.JSON,
+                )
+            else:
+                allure.attach(
+                    body,
+                    name=f"response-{response.status_code}",
+                    attachment_type=allure.attachment_type.TEXT,
+                )
             if response.status_code != 429 or attempt == self.rate_limit_retries:
                 return response
             retry_after = response.headers.get("Retry-After")
