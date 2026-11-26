@@ -20,6 +20,7 @@
 - 按业务场景整理的 `curl` 调用示例
 - 32 条可执行的 REST API 测试用例
 - 基于 `pytest + requests` 的 Python 自动化测试项目
+- 基于 JMeter 的性能测试计划
 - HTML、Markdown、Excel 和 JUnit 测试报告
 
 ## 先看什么
@@ -31,6 +32,7 @@
 | 复制调用命令 | [REST API 示例](./rest-api-examples.md) |
 | 评审测试范围 | [测试用例文档](./rest-api-test-cases.md) · [Excel 版本](./rest-api-test-cases.xlsx) |
 | 运行自动化测试 | [api-tests/README.md](./api-tests/README.md) |
+| 执行性能测试 | [JMeter 测试计划](./jmeter/chinese-poetry-api.jmx) · [运行说明](./jmeter/README.md) |
 
 ## API 覆盖范围
 
@@ -91,6 +93,9 @@ pytest -m smoke
 ├── rest-api-examples.md         # curl 调用示例
 ├── rest-api-test-cases.md       # 测试用例说明
 ├── rest-api-test-cases.xlsx     # Excel 测试用例
+├── jmeter/
+│   ├── chinese-poetry-api.jmx   # JMeter 性能测试计划
+│   └── README.md                # 压测运行说明
 └── api-tests/
     ├── api/                     # 请求封装
     ├── config/                  # 环境配置
